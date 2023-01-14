@@ -10,8 +10,19 @@ distro_upgrade(){
 
 main_screen() {
     clear
-    figlet "Mango Linux"
-    echo -e "Mango Linux Configurator \n"
+    # figlet "Mango Linux"
+    # echo -e "Mango Linux Configurator \n"
+    # echo -e "\033[47m\033[30m 🥭 Mango Linux Configurator \033[0m\n"
+    # printf "\033[38;2;204;204;255m Mango Linux Configurator \033[0m\n"
+    # printf "\033[38;2;255;255;255;48;2;227;182;44mMango Linux Configurator\033[0m\n"
+    # printf "\n\033[38;2;0;0;0;48;2;227;182;44m 🥭 Mango Linux Configurator 🥭 \033[0m\n\n"
+    # printf "\n\033[38;2;255;255;255;48;2;242;144;24m Mango Linux Configurator \033[0m\n\n"
+    printf "\n 🥭 \033[38;2;0;0;0;48;2;242;144;24m Mango Linux Configurator \033[0m 🥭\n\n"
+
+
+
+
+
     echo -e "Welcome to mango linux configurator. \n(shell script version) \n"
 
     # echo -e ""
