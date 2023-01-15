@@ -65,7 +65,9 @@ arise from the use of these third-party applications.\n" | fold -s
     # add a first time setup to install flatpak dependencies and apt dependencies, with confirmation
 
     echo -e "\e[1mSelect to Manage/Configure:"
-    configure_action=$(gum choose  --height 9  --cursor.foreground="#e3b62c" --item.foreground="#d9d9d9" "Manage Apps and Pkgs" "Add-ons" "Boot-config" "Tweaks" "System Tools" "Disk Management" "Connectivity and Wifi Hotspot" \
+    configure_action=$(gum choose  --height 9  --cursor.foreground="#e3b62c" --item.foreground="#d9d9d9" "Manage Apps and Pkgs" \
+    "Add-ons" "Boot-config" "Tweaks" "System Tools" "Setup Windows Subsystem" "Setup Android Subsystem"\
+    "Disk Management" "Connectivity and Wifi Hotspot" \
     "Common Config Files" "Install Proprietary software and Codecs" "Optimise GS-connect" "exit")
 
     case $configure_action in
@@ -191,7 +193,7 @@ arise from the use of these third-party applications.\n" | fold -s
                     main_screen
                 ;;
                 "WiFi Hotspot")
-                    wihotspot &
+                    nohup wihotspot &
                     main_screen
                 ;;
                 "Go Back")
@@ -218,6 +220,12 @@ arise from the use of these third-party applications.\n" | fold -s
                     main_screen
                 ;;
             esac
+        ;;
+        "Setup Win"*)
+            echo "WINDOWS"
+        ;;
+        "Setup Android"*)
+            echo "Android subsystem"
         ;;
         "exit")
             clear
