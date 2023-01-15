@@ -52,21 +52,20 @@ main_screen() {
 
 
 
-    echo -e "Welcome to mango linux configurator. \n(shell script version) \n"
+    echo -e "Welcome to \e[1mmango linux configurator. \n\e[0m(shell script version) \n"
 
     # echo -e ""
 
-    # "This tool is not affiliated with or endorsed by any third-party open-source applications it may interact with. 
-    # Use of these applications is subject to their respective terms of use and privacy policies. 
-    # The developer of this tool bears no responsibility for any damages or issues that may arise 
-    # from the use of these third-party applications."
-
-    # \n\n\n
+## maybe include it in the first run setup
+echo -e "\e[2mThis tool is not affiliated with or endorsed by any third-party open-source applications \
+it may interact with. Use of these applications is subject to their respective terms of \
+use and privacy policies. The developer of this tool bears no responsibility for any damages or issues that may \
+arise from the use of these third-party applications.\n" | fold -s
 
     # add a first time setup to install flatpak dependencies and apt dependencies, with confirmation
 
-    echo "Select to Manage/Configure:"
-    configure_action=$(gum choose  --height 15  --cursor.foreground="#e3b62c" --item.foreground="#d9d9d9" "Manage Apps and Pkgs" "Add-ons" "Boot-config" "Tweaks" "System Tools" "Disk Management" "Connectivity and Wifi Hotspot" \
+    echo -e "\e[1mSelect to Manage/Configure:"
+    configure_action=$(gum choose  --height 9  --cursor.foreground="#e3b62c" --item.foreground="#d9d9d9" "Manage Apps and Pkgs" "Add-ons" "Boot-config" "Tweaks" "System Tools" "Disk Management" "Connectivity and Wifi Hotspot" \
     "Common Config Files" "Install Proprietary software and Codecs" "Optimise GS-connect" "exit")
 
     case $configure_action in
