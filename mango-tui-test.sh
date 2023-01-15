@@ -225,6 +225,7 @@ arise from the use of these third-party applications.\n" | fold -s
             echo "WINDOWS"
         ;;
         "Setup Android"*)
+            # https://waydro.id/#install , add warning for supported GPU and add a fallback in case of unsupoorted hardware
             echo "Android subsystem"
         ;;
         *"Gaming")
