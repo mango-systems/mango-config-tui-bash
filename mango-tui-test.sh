@@ -20,7 +20,7 @@ distro_upgrade_cli_way(){
     if [[ $confirmation == "true" ]]; then
         gnome-terminal -e "bash -c ' \
         sudo apt update \
-        sudo apt install update-manager-core -y\
+        sudo apt install update-manager-core -y \
         sudo do-release-upgrade -d \
         sudo apt autoremove --purge \
         ; exec bash'" > /dev/null;
