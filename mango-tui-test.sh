@@ -66,7 +66,7 @@ arise from the use of these third-party applications.\n" | fold -s
 
     echo -e "\e[1mSelect to Manage/Configure:"
     configure_action=$(gum choose  --height 9  --cursor.foreground="#e3b62c" --item.foreground="#d9d9d9" "Manage Apps and Pkgs" \
-    "Add-ons" "Boot-config" "Tweaks" "System Tools" "Setup Windows Subsystem" "Setup Android Subsystem"\
+    "Add-ons" "Boot-config" "Tweaks" "System Tools" "Setup Windows Subsystem" "Setup Android Subsystem" "Optimise for Gaming"\
     "Disk Management" "Connectivity and Wifi Hotspot" \
     "Common Config Files" "Install Proprietary software and Codecs" "Optimise GS-connect" "exit")
 
@@ -226,6 +226,9 @@ arise from the use of these third-party applications.\n" | fold -s
         ;;
         "Setup Android"*)
             echo "Android subsystem"
+        ;;
+        *"Gaming")
+            echo "Gaming"
         ;;
         "exit")
             clear
