@@ -160,7 +160,7 @@ main_screen() {
             network_manage=$(gum choose "Blueman" "WiFi Hotspot" "Go Back")
             case $network_manage in
                 "Blueman")
-                    blueman &
+                    blueman-manager &
                     main_screen
                 ;;
                 "WiFi Hotspot")
