@@ -37,7 +37,7 @@ main_screen() {
     # add a first time setup to install flatpak dependencies and apt dependencies, with confirmation
 
     echo "Select to Manage/Configure:"
-    configure_action=$(gum choose "Manage Apps and Pkgs" "Add-ons" "Boot-config" "Tweaks" "System Tools" "Disk Management" "Connectivity and Wifi Hotspot" \
+    configure_action=$(gum choose  --height 15  --cursor.foreground="#e3b62c" "Manage Apps and Pkgs" "Add-ons" "Boot-config" "Tweaks" "System Tools" "Disk Management" "Connectivity and Wifi Hotspot" \
     "Common Config Files" "Install Proprietary software and Codecs" "Optimise GS-connect" "exit")
 
     case $configure_action in
@@ -143,14 +143,54 @@ main_screen() {
             esac
         ;;
         "Disk Management")
+            echo "Select Disk Management utility"
+            disk_manage=$(gum choose "GNOME Disks" "Go Back")
+            case $disk_manage in
+                "GNOME Disks")
+                    gnome-disks &
+                    main_screen
+                ;;
+                "Go Back")
+                    main_screen
+                ;;
+            esac
         ;;
         "Connectivity and Wifi Hotspot")
+            echo "Select to Manage Connectivity setting and Wifi Hotspot"
+            network_manage=$(gum choose "Blueman" "WiFi Hotspot" "Go Back")
+            case $network_manage in
+                "Blueman")
+                    blueman &
+                    main_screen
+                ;;
+                "WiFi Hotspot")
+                    wihotspot &
+                    main_screen
+                ;;
+                "Go Back")
+                    main_screen
+                ;;
+            esac
         ;;
         "Common Config Files")
         ;;
         "Install Proprietary software and Codecs")
         ;;
         "Optimise GS-connect")
+            echo "Manage and Optimise GS Connect:"
+            gs_connect=$(gum choose "GS-Connect Settings" "Optimise GS-Connect on Android - Blog Post" "Go Back")
+            case $gs_connect in
+                "GS-Connect Settings")
+                    gnome-extensions prefs gsconnect@andyholmes.github.io > /dev/null &
+                    main_screen
+                ;;
+                "Optimise GS-Connect on Android - Blog Post")
+                    xdg-open "https://google.com" #enter blog post later
+                ;;
+                "Go Back")
+                    main_screen
+                ;;
+            esac
         ;;
         "exit")
             clear
