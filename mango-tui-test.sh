@@ -1,11 +1,37 @@
 #!/bin/bash
 
-distro_upgrade(){
+distro_upgrade_cli_way(){
+    # UNUSED!, for preffered update-manager
+
     # https://jumpcloud.com/blog/how-to-upgrade-ubuntu-20-04-to-ubuntu-22-04
+    
+    gum style \
+	--foreground 212 --border-foreground 212 --border double \
+	--align center --width 50 --margin "1 2" --padding "2 4" \
+	'Distro Upgrade Utility' 'So sweet and so fresh!'
+
     echo -e "\nDistro upgrade:\n"
     echo -e "Prerequisites:\n-Atleast 20GB of Free Space\nRecommended:\n-Connect your device to a Power Source\n-Close all other application\n-Backup all your data"
     # use gnome terminal to pass sudo privillage, do not initiate sudo in this script
     ## INCOMPLETE
+    $confirmation
+    gum confirm "Continue? This may make your system unstable" && confirmation=true || main_screen
+    # echo $confirmation
+    if [[ $confirmation == "true" ]]; then
+        gnome-terminal -e "bash -c ' \
+        sudo apt update \
+        sudo apt install update-manager-core -y\
+        sudo do-release-upgrade -d \
+        sudo apt autoremove --purge \
+        ; exec bash'" > /dev/null;
+    fi
+    clear
+    main_screen
+
+}
+
+distro_upgrade(){
+    update-manager --check-dist-upgrades & main_screen
 }
 
 main_screen() {
@@ -134,8 +160,7 @@ main_screen() {
                 "System Monitoring Center")
                 ;;
                 "Distro Upgrade")
-                    distro_upgrade &
-                    main_screen
+                    distro_upgrade
                 ;;
                 "Go Back")
                     main_screen
