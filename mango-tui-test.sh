@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# BOOKMARKS
+# - https://misc.flogisoft.com/bash/tip_colors_and_formatting
+
 distro_upgrade_cli_way(){
     # UNUSED!, for preffered update-manager
 
@@ -63,7 +66,7 @@ main_screen() {
     # add a first time setup to install flatpak dependencies and apt dependencies, with confirmation
 
     echo "Select to Manage/Configure:"
-    configure_action=$(gum choose  --height 15  --cursor.foreground="#e3b62c" "Manage Apps and Pkgs" "Add-ons" "Boot-config" "Tweaks" "System Tools" "Disk Management" "Connectivity and Wifi Hotspot" \
+    configure_action=$(gum choose  --height 15  --cursor.foreground="#e3b62c" --item.foreground="#d9d9d9" "Manage Apps and Pkgs" "Add-ons" "Boot-config" "Tweaks" "System Tools" "Disk Management" "Connectivity and Wifi Hotspot" \
     "Common Config Files" "Install Proprietary software and Codecs" "Optimise GS-connect" "exit")
 
     case $configure_action in
@@ -226,4 +229,8 @@ main_screen() {
 }
 
 # _main_
+
+# add a conditional for first time run config
+
 main_screen
+
