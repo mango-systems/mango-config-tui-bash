@@ -239,7 +239,7 @@ arise from the use of these third-party applications.\n" | fold -s
             troubleshoot=$(gum choose "Wrong time on my linux system in a Dual Boot System" "Go Back")
             case $troubleshoot in
             "Wrong time"*)
-                gum confirm "Apply this fix?" && timedatectl set-local-rtc 1 || main_screen
+                gum confirm "Apply this fix? (timedatectl set-local-rtc 1)" && timedatectl set-local-rtc 1 || main_screen
             ;;
             "Go Back")
                     main_screen
