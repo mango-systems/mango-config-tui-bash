@@ -68,7 +68,7 @@ arise from the use of these third-party applications.\n" | fold -s
     configure_action=$(gum choose  --height 9  --cursor.foreground="#e3b62c" --item.foreground="#d9d9d9" "Manage Apps and Pkgs" \
     "Add-ons" "Boot-config" "Tweaks" "System Tools" "Setup Windows Subsystem" "Setup Android Subsystem" "Optimise for Gaming"\
     "Disk Management" "Connectivity and Wifi Hotspot" \
-    "Common Config Files" "Install Proprietary software and Codecs" "Optimise GS-connect"  "Boot to UEFI" "exit")
+    "Common Config Files" "Install Proprietary software and Codecs" "Optimise GS-connect" "Troubleshoot" "Boot to UEFI" "exit")
 
     case $configure_action in
         "Manage Apps and Pkgs")
@@ -233,6 +233,18 @@ arise from the use of these third-party applications.\n" | fold -s
         ;;
         "Boot to"*)
             pkexec systemctl reboot --firmware-setup
+        ;;
+        "Troubleshoot")
+            echo "Troubleshooting"
+            troubleshoot=$(gum choose "Wrong time on my linux system in a Dual Boot System" "Go Back")
+            case $troubleshoot in
+            "Wrong time"*)
+                gum confirm "Apply this fix?" && timedatectl set-local-rtc 1 || main_screen
+            ;;
+            "Go Back")
+                    main_screen
+            ;;
+            esac
         ;;
         "exit")
             clear
