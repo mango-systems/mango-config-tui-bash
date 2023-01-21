@@ -68,7 +68,7 @@ arise from the use of these third-party applications.\n" | fold -s
     configure_action=$(gum choose  --height 9  --cursor.foreground="#e3b62c" --item.foreground="#d9d9d9" "Manage Apps and Pkgs" \
     "Add-ons" "Boot-config" "Tweaks" "System Tools" "Setup Windows Subsystem" "Setup Android Subsystem" "Optimise for Gaming"\
     "Disk Management" "Connectivity and Wifi Hotspot" \
-    "Common Config Files" "Install Proprietary software and Codecs" "Optimise GS-connect" "exit")
+    "Common Config Files" "Install Proprietary software and Codecs" "Optimise GS-connect"  "Boot to UEFI" "exit")
 
     case $configure_action in
         "Manage Apps and Pkgs")
@@ -230,6 +230,9 @@ arise from the use of these third-party applications.\n" | fold -s
         ;;
         *"Gaming")
             echo "Gaming"
+        ;;
+        "Boot to"*)
+            pkexec systemctl reboot --firmware-setup
         ;;
         "exit")
             clear
